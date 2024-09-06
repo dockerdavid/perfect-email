@@ -1,0 +1,37 @@
+name: perfect-email
+services:
+  # email-server:
+  #   container_name: email-server
+  #   restart: unless-stopped
+  #   image: communicate360/perfect-email
+  #   environment:
+  #     - DB_HOST=mariadb-perfect-email
+  #     - DB_USER=root
+  #     - DB_PASS=Whoami582413
+  #     - DB_NAME=users-qa
+  #     - DB_PORT=3306
+  #     - EMAIL_HOST=ara.conexion.cr
+  #     - EMAIL_PORT=465
+  #     - EMAIL_SECURE=true
+  #     - EMAIL_USER=lina@communicate360.net
+  #     - EMAIL_PASS=Herrera2024
+  #   networks:
+  #     - communicate
+
+  mariadb:
+    container_name: mariadb-perfect-email
+    restart: unless-stopped
+    image: mariadb:11.3.2
+    volumes:
+      - perfect-email:/var/lib/mysql:Z
+    environment:
+      - MARIADB_ROOT_PASSWORD=123456
+    ports:
+      - 3306:3306
+
+volumes:
+  perfect-email:
+    external: true
+# networks:
+#   communicate:
+#     external: true

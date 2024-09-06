@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+README.md
+yarn.lock
+docker-compose.yml
+.env.template
